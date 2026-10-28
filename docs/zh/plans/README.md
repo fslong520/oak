@@ -8,6 +8,7 @@
 | 文档 | 内容 | 启动前提 |
 |---|---|---|
 | [`ai-agent-design.md`](ai-agent-design.md) | **AI Agent 插件设计**（已按 OPP/1 重写）：多模态 LLM 作为外部插件经策展工具面自动剪辑，`render.*` 取帧回喂形成"编辑→看图→再编辑"视觉闭环；事务化编辑、双层确认、声明式 AI 面板、Mock LLM/回放夹具测试、A1–A5 里程碑 | external-plugin-system P1–P3 完成（面板需 P4） |
+| [`ai-editing-feature-plan.md`](ai-editing-feature-plan.md) | **AI 剪辑开发规划（ai-feature 分支）**：tools→hooks→MCP 次序——工具 schema 先冻结（对齐 OPP §8、SDK 直连）、适配层 hooks（确认门/回读断言/失败回喂）、MCP 后置薄封装；agent 核（pi + AGENTS.md 链）与 memlite 两档记忆（工程级仓外 data-dir）；T0–T6 里程碑 | 无（SDK 直连先行，不等 OPP 宿主） |
 | [`app-pure-sdk-and-engine-facade.md`](app-pure-sdk-and-engine-facade.md) | **oak-app 纯 SDK 化与引擎门面补全**：领域逻辑迁入 oak-engine，Rust SDK 提供完整安全封装；分阶段清除 app 对内部 crate 的直调，并以独立 sdk_editor 重建完整剪辑工作流验收 | 已解锁，按 P0–P8 推进 |
 | [`completed/external-plugin-system.md`](completed/external-plugin-system.md) | **外部功能插件系统**：插件=独立进程（非库加载），JSON-RPC over stdio 控制面 + shm 数据面（泛化 M15 render-worker 传输）；策展宿主 API（事务化可撤销编辑、取帧回喂 AI）、声明式/像素面双 UI 路径、能力位与确认模式；含与 ai-agent-design.md 的关系与 P1–P6 里程碑 | 已解锁（RIIR + M15 完成），随时启动 |
 | [`completed/external-plugin-protocol.md`](completed/external-plugin-protocol.md) | **插件协议规范 OPP/1**：NDJSON 分帧 + JSON-RPC 2.0 双向信封、握手/心跳/关闭、全量方法/事件/错误码、编辑事务协议、shm 数据面（无头部无锁）、声明式与像素面 UI 协议、限流配额、版本演进规则、AI 粗剪报文示例 | 随 external-plugin-system 启动 |
